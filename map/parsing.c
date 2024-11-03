@@ -26,7 +26,7 @@ int parse(t_checks *tab, char *line)
 	t_checks	*tmp;
 	
 	i = 0;
-	while (line[i])
+	while (line[i] && line[i] != '\n')
 	{
 		tmp = find(tab, line[i]);
 		if (tmp)
@@ -77,11 +77,8 @@ char	**parsing(int fd, char **txt)
 	while (line)
 	{
 		txt = fill(txt, line, i);
-		printf("passage n %d\n", i);
 		free(line);
-		printf("oh non..\n");
 		line = get_next_line(fd);
-		printf("pitie pas mon gnl\n");
 		if (!parse(tab, line))
 		{
 			free(tab);

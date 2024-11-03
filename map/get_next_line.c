@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:22:39 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/03 20:17:31 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/03 21:13:20 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -121,6 +121,5 @@ char	*get_next_line(int fd)
 	if (buffer[0])
 		line = check_line(buffer);
 	buffer = clean_buffer(buffer);
- 	printf("line : %s", line);
 	return (line);
 }

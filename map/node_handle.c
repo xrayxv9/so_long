@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checks_handler.c                                  :+:      :+:    :+:   */
+/*   node_handle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 17:13:06 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/03 21:25:08 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -25,7 +25,7 @@ t_checks	*find(t_checks *dict, char c)
 	int	i;
 
 	i = 0;
-	while (dict[i].key != -1 && dict[i].key != c)
+	while (dict[i].key != '\0' && dict[i].key != c)
 		i++;
 	if (dict[i].key != c)
 		return (NULL);
