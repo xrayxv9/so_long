@@ -40,27 +40,30 @@ int parse(t_checks *tab, char *line)
 
 void	free_all(char **txt)
 {
+	char	**tmp;
+
+	tmp = txt;
 	while (*txt)
 		free(*txt++);
-	free(txt);
+	free(tmp);
 }
 
 // fill the tmp with txt + line = NULL
 char **fill(char **txt, char *line, int i)
 {
 	char	**tmp;
+	int		j;
 
+	j = 0;
 	tmp = malloc(sizeof(char *) * (i + 1));
-	while (*txt)
+	while (txt[j])
 	{
-		printf("test \n");
-		*tmp = ft_strdup(*txt);
-		tmp++;
-		txt++;
+		tmp[j] = ft_strdup(txt[j]);
+		j++;
 	}
-	*tmp = ft_strdup(line);
-	tmp++;
-	*tmp = NULL;
+	tmp[j] = ft_strdup(line);
+	j++;
+	tmp[j] = NULL;
 	free_all(txt);
 	return (tmp);
 }
@@ -77,8 +80,6 @@ char	**parsing(int fd, char **txt)
 	while (line)
 	{
 		txt = fill(txt, line, i);
-		free(line);
-		line = get_next_line(fd);
 		if (!parse(tab, line))
 		{
 			free(tab);
@@ -86,7 +87,11 @@ char	**parsing(int fd, char **txt)
 			free_all(txt);
 			return (NULL);
 		}
+		free(line);
+		line = get_next_line(fd);
+		i++;
 	}
 	free(line);
+	free(tab);
 	return (txt);
 }

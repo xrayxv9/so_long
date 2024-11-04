@@ -23,11 +23,12 @@ int main()
 
 	txt = malloc (1 * sizeof(char *));
 	txt[0] = NULL;
-	parsing(fd, txt);
-	printf("test\n");
+	txt = parsing(fd, txt);
 	while (txt[i])
 	{
 		printf("%s", txt[i]);
+		free(txt[i]);
 		i++;
 	}
+	free(txt);
 }
