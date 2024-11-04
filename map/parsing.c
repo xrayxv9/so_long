@@ -12,19 +12,11 @@
 #include "get_next_line.h"
 #include "parsing.h"
 
-/*
-	 il faut que je fasse un tableau de toutes les lignes que j'ai recup
-	 grace a ca je pourrais en suite  faire un backtracking
-	 le backtracking me servira a check que oui ou non il y a bien un chemin qui existe 
-	 pour finir la map
-*/
-
-
-int parse(t_checks *tab, char *line)
+int	parse(t_checks *tab, char *line)
 {
 	int			i;
 	t_checks	*tmp;
-	
+
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
@@ -48,8 +40,7 @@ void	free_all(char **txt)
 	free(tmp);
 }
 
-// fill the tmp with txt + line = NULL
-char **fill(char **txt, char *line, int i)
+char	**fill(char **txt, char *line, int i)
 {
 	char	**tmp;
 	int		j;
@@ -63,7 +54,7 @@ char **fill(char **txt, char *line, int i)
 	}
 	tmp[j] = ft_strdup(line);
 	j++;
-	tmp[j] = NULL;
+	tmp[j] = NULL;	
 	free_all(txt);
 	return (tmp);
 }
@@ -80,6 +71,7 @@ char	**parsing(int fd, char **txt)
 	while (line)
 	{
 		txt = fill(txt, line, i);
+		printf("la ligne en question : %s\n", txt[0]);
 		if (!parse(tab, line))
 		{
 			free(tab);

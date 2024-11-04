@@ -6,11 +6,11 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:22:39 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/03 21:13:20 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/04 11:18:47 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
-#include <stdio.h>
+
 static int	fill(char **buffer, int fd)
 {
 	int	run;

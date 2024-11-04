@@ -14,16 +14,22 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int main()
+int	main(void)
 {
-	char **txt;
-	const char *PATH = "maptest1.ber";
-	int fd = open(PATH, O_RDONLY);
-	int i = 0;
+	char		**txt;
+	const char	*PATH = "maptest1.ber";
+	int			fd = open(PATH, O_RDONLY);
+	int			i = 0;
 
 	txt = malloc (1 * sizeof(char *));
 	txt[0] = NULL;
 	txt = parsing(fd, txt);
+	if (!txt)
+	{
+		printf("It didn't work you stupid boy !");
+		free(txt);
+		return(0);
+	}
 	while (txt[i])
 	{
 		printf("%s", txt[i]);
