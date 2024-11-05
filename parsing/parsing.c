@@ -3,15 +3,17 @@
 
 void	remove_n(char **txt)
 {
-	int	len;
 	int i;
+	int	j;
 
 	i = 0;
 	while (txt[i])
 	{
-		len = ft_strlen(txt[i]);
-		if (txt[i][len] == '\n')
-			txt[i][len] = '\0';
+		j = 0;
+		while (txt[i][j] && txt[i][j] != '\n')
+			j++;
+		if (txt[i][j] == '\n')
+			txt[i][j] = '\0';
 		i++;
 	}
 }
@@ -52,11 +54,11 @@ int	is_map_framed(char **txt)
 			{
 				if (txt[y][x] != '1')
 					return (-3);
-				x++;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+				x++;
 			}
 		}
 		else
-			if (txt[y][0] != '1' || txt[y][len] != '1')
+			if (txt[y][0] != '1' || txt[y][len - 1] != '1')
 				return (-1);
 	}
 	return (1);
