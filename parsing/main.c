@@ -16,15 +16,15 @@
 
 int	main(void)
 {
-	char		**txt;
 	const char	*PATH = "../map/maptest1.ber";
 	int			fd = open(PATH, O_RDONLY);
 	int			result;
+	char		**txt;
 
-	result = parsing(fd);
+	txt = malloc (1 * sizeof(char *));
+	txt[0] = NULL;
+	txt = get_text(fd, txt);
+	result = parsing(txt);
 
-	if (result)
-		printf("good Job, your map does work !");
-	else
-		printf("sorry but your map does not respect the rules.");
+	free_all(txt);
 }

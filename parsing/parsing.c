@@ -22,14 +22,13 @@ int	check_lenght(char **txt)
 	int y;
 
 	y = 0;
+	remove_n(txt);
 	len = ft_strlen(txt[y]);
-	if (txt[y][len] == '\n')
-		len--;
 	while (txt[y])
 	{
-		y++;
 		if (ft_strlen(txt[y]) != len)
 			return (0);
+		y++;
 	}
 	return (len);
 }
@@ -42,42 +41,50 @@ int	is_map_framed(char **txt)
 
 	len = check_lenght(txt);
 	if (!len)
-		return (0);
+		return (-2);
 	x = 0;
-	y = 0;
-	while (txt[y])
+	y = -1;
+	while (txt[++y])
 	{
 		if (y == 0 || !txt[y + 1])
 		{
-			while (txt[y][x] && txt[y][x] != '\n')
+			while (txt[y][x])
 			{
 				if (txt[y][x] != '1')
-					return (0);
+					return (-3);
 				x++;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 			}
 		}
 		else
 			if (txt[y][0] != '1' || txt[y][len] != '1')
-				return (0);
+				return (-1);
 	}
 	return (1);
 }
 
-int path_finder(char **txt, int main, int sub)
+int	parsing(char **txt)
 {
-	return (0);	
-}
+	int	error;
 
-
-int	parsing(int fd)
-{
-	char	**txt;
-	int		res;
-
-	txt = malloc(sizeof(char *) * 1);
-	txt[0] = NULL;
-	txt = get_text(fd, txt);
-	res = path_finder(txt, 0, int sub)
-	free_all(txt);
-	return (1);
+	error = is_map_framed(txt);
+	if (error == -2)
+	{
+		printf("❌ The length of one of your line is uncorrect, please verify your map.");
+		return (0);
+	}
+	else if (error == -1)
+	{
+		printf("❌ The frame of your map aren't good. Fix it and try again.\n");
+		return (0);
+	}
+	else if (error == -3)
+	{
+		printf("❌ The top side or bottom side of your map are not valid ");
+		return (0);
+	}
+	else
+	{
+		printf("✅ your map is perfect, nothing to say ! good job !");
+		return (1);
+	}
 }

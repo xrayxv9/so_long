@@ -19,7 +19,7 @@ t_checks	*create(void);
 
 char		**get_text(int fd, char **txt);
 
-int			parsing(int fd);
+int			parsing(char **txt);
 
 void	free_all(char **txt);
 
