@@ -90,3 +90,27 @@ int	parsing(char **txt)
 		return (1);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
