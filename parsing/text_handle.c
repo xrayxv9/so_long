@@ -20,7 +20,7 @@ int	pre_check(t_checks *tab, char *line)
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		tmp = find(tab, line[i]);
+		tmp = ft_find(tab, line[i]);
 		if (tmp)
 			tmp->value = 1;
 		else
@@ -67,7 +67,7 @@ char	**get_text(int fd, char **txt)
 
 	i = 1;
 	line = get_next_line(fd, 0);
-	tab = create();
+	tab = ft_create();
 	while (line)
 	{
 		txt = fill(txt, line, i);

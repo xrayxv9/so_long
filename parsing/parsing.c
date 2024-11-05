@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
+/*   Updated: 2024/11/05 17:03:51 by cmorel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 #include "get_next_line.h"
 
@@ -71,22 +83,22 @@ int	parsing(char **txt)
 	error = is_map_framed(txt);
 	if (error == -2)
 	{
-		printf("❌ The length of one of your line is uncorrect, please verify your map.");
+		ft_printf("❌ The length of one of your line is uncorrect, please verify your map.");
 		return (0);
 	}
 	else if (error == -1)
 	{
-		printf("❌ The frame of your map aren't good. Fix it and try again.\n");
+		ft_printf("❌ The frame of your map aren't good. Fix it and try again.\n");
 		return (0);
 	}
 	else if (error == -3)
 	{
-		printf("❌ The top side or bottom side of your map are not valid ");
+		ft_printf("❌ The top side or bottom side of your map are not valid ");
 		return (0);
 	}
 	else
 	{
-		printf("✅ your map is perfect, nothing to say ! good job !");
+		ft_printf("✅ your map is perfect, nothing to say ! good job !");
 		return (1);
 	}
 }

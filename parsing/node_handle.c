@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/03 21:25:08 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/05 17:01:40 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -20,7 +20,7 @@ static t_checks	node_maker(char c)
 	return (node);
 }
 
-t_checks	*find(t_checks *dict, char c)
+t_checks	*ft_find(t_checks *dict, char c)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ t_checks	*find(t_checks *dict, char c)
 	return (&dict[i]);
 }
 
-t_checks	*create(void)
+t_checks	*ft_create(void)
 {
 	t_checks	*dict;
 
