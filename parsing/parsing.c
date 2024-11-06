@@ -6,12 +6,10 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/05 17:03:51 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:11:55 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "parsing.h"
-#include "get_next_line.h"
 
 void	remove_n(char **txt)
 {
@@ -37,6 +35,7 @@ int	check_lenght(char **txt)
 
 	y = 0;
 	remove_n(txt);
+	printf("%s\n", txt[y]);
 	len = ft_strlen(txt[y]);
 	while (txt[y])
 	{

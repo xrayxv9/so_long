@@ -9,7 +9,6 @@
 //   Updated: 2024/11/03 19:16:24 by xray             ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
-#include "get_next_line.h"
 #include "parsing.h"
 
 int	pre_check(t_checks *tab, char *line)
