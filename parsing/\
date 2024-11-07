@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:31:07 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:26 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/07 14:00:22 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -24,6 +24,13 @@ void	find_p(char **txt, int *x, int *y)
 		(*x)++;
 	}
 }
+
+
+int check_directions(char **txt)
+{
+	return (0);
+}
+
 
 int	certificate_map(int fd)
 {
@@ -44,7 +51,7 @@ int	certificate_map(int fd)
 		return (0);
 	}
 	find_p(txt, &x, &y);
-	flood_fill(txt, x, y);
+
 
 
 

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:10:41 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/06 11:53:38 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/07 14:59:32 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_checks
 	int	value;
 }			t_checks;
 
+typedef struct s_point
+{
+	int	x;
+	int y;
+}		t_point;
+
 t_checks	*ft_find(t_checks *dict, char c);
 
 t_checks	*ft_create(void);
@@ -34,8 +40,10 @@ char		**get_text(int fd, char **txt);
 
 int			parsing(char **txt);
 
-void	free_all(char **txt);
+void		free_all(char **txt);
 
-int		ft_printf(const char *s, ...);
+int			ft_printf(const char *s, ...);
+
+int			check_truth(t_checks *check);
 
 #endif
