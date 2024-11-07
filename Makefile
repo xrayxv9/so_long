@@ -32,13 +32,7 @@ OBJ = $(PARSING:.c=.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 
 all: $(NAME)
-	@echo "$(BLUE)=== Compilation terminée ==="
-	@echo " █████╗ ██╗     ██╗     "
-	@echo "██╔══██╗██║     ██║     "
-	@echo "███████║██║     ██║     "
-	@echo "██╔══██║██║     ██║     "
-	@echo "██║  ██║███████╗███████╗"
-	@echo "╚═╝  ╚═╝╚══════╝╚══════╝"
+	@echo "$(BLUE)Compilation terminée"
 	@echo "$(RESET)"
 
 #$(MLX):
@@ -55,30 +49,18 @@ $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 clean:
-	@echo "$(RED)=== Suppression des fichiers objets... ==="
+	@echo "$(RED)Suppression des fichiers objets..."
 	@rm -rf $(OBJ_PATH)
 	@make --no-print-directory -C $(PRINTF_DIR) fclean
 	@echo "$(RED)"
-	@echo " ▄▄· ▄▄▌  ▄▄▄ . ▄▄▄·  ▐ ▄ "
-	@echo "▐█ ▌▪██•  ▀▄.▀·▐█ ▀█ •█▌▐█"
-	@echo "██ ▄▄██▪  ▐▀▀▪▄▄█▀▀█ ▐█▐▐▌"
-	@echo "▐███▌▐█▌▐▌▐█▄▄▌▐█ ▪▐▌██▐█▌"
-	@echo "·▀▀▀ .▀▀▀  ▀▀▀  ▀  ▀ ▀▀ █▪"
 	@echo "$(RESET)"
 
 fclean: clean
-	@echo "$(RED)=== Suppression de l'exécutable... ==="
+	@echo "$(RED)Suppression de l'exécutable..."
 	@rm -f $(NAME)
 	
 re: fclean all
-	@echo "$(GREEN)=== Réinitialisation terminée ==="
-	@echo "░▒▓███████▓▒░░▒▓████████▓▒░"
-	@echo "░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░░"
-	@echo "░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░░"
-	@echo "░▒▓███████▓▒░░▒▓██████▓▒░░░"
-	@echo "░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░░"
-	@echo "░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░░" 
-	@echo "░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░"
+	@echo "$(GREEN)Réinitialisation terminée"
 	@echo "$(RESET)"
 
 .PHONY: all clean fclean re
