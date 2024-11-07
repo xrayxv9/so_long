@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:31:07 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:26 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/07 17:23:50 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -44,7 +44,7 @@ int	certificate_map(int fd)
 		return (0);
 	}
 	find_p(txt, &x, &y);
-	flood_fill(txt, x, y);
+	flood(txt, x, y);
 
 
 
