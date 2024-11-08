@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:00:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/08 16:27:59 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/08 18:51:40 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -38,22 +38,22 @@ char **cpy_map(char **txt, t_point *max)
 	return (cpy);
 }
 
-int	ft_fill(char **cpy, t_point c, t_point max)
+int	ft_fill(char **cpy, int x, int y, t_point max)
 {
 	int	up;
 	int	down;
 	int	right;
 	int	left;
 
-	if (cpy[c.x][c.y] == 'E')
-		return (1);
-	if (c.x == 0 || c.y == 0 || c.y == max.y || c.x == max.x || cpy[c.x][c.y] == 1)
+	if (x < 0 || y < 0 || y >= max.y|| x >= max.x || cpy[x][y] == 1)
 		return (0);
-	cpy[c.x][c.y] = '1';
-	up = ft_fill(cpy, (t_point){c.x - 1, c.y}, max);
-	right = ft_fill(cpy, (t_point){c.x, c.y + 1}, max);
-	left = ft_fill(cpy, (t_point){c.x - 1, c.y - 1}, max);
-	down = ft_fill(cpy, (t_point){c.x + 1, c.y}, max);
+	if (cpy[x][y] == 'E')
+		return (1);
+	cpy[x][y] = '1';
+	up = ft_fill(cpy, x - 1, y, max);
+	right = ft_fill(cpy, x, y + 1, max);
+	left = ft_fill(cpy, x, y - 1, max);
+	down = ft_fill(cpy, x + 1, y, max);
 
 	if (up || down || left || right)
 		return (1);
@@ -69,11 +69,9 @@ int flood(char **txt,int x,int y)
 
 	c = malloc(sizeof(t_point));
 	max = malloc(sizeof(t_point));
-	c->x = x;
-	c->y = y;
 	cpy = cpy_map(txt, max);
 	code = -5;
-	if (ft_fill(cpy, *c, *max))
+	if (ft_fill(cpy, x, y, *max))
 	{
 		ft_printf("Congratulation, you even have a path from the start to the exit ! ✅");
 		code = 1;
