@@ -1,8 +1,5 @@
 NAME = so_long
 
-
-
-
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
@@ -28,7 +25,7 @@ GNL = $(GNL_DIR)get_next_line.c $(GNL_DIR)get_next_line_utils.c
 PARSING_PATH = parsing/
 OBJ_PATH = obj/
 
-PARSING = certificate_map.c main.c node_handle.c parsing.c text_handle.c 
+PARSING = certificate_map.c main.c node_handle.c parsing.c text_handle.c flood_fill.c
 
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
 OBJ = $(PARSING:.c=.o)
