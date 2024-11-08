@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/07 14:58:25 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/08 13:00:57 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -35,12 +35,12 @@ int	check_lenght(char **txt)
 	t_checks	*check;
 	int			save;
 
-	y = 0;
+	y = -1;
 	check = ft_create();
 	remove_n(txt);
-	len = ft_strlen(txt[y]);
+	len = ft_strlen(txt[0]);
 	save = len;
-	while (txt[y])
+	while (txt[++y])
 	{
 		if (ft_strlen(txt[y]) != len)
 			return (0);
@@ -50,13 +50,9 @@ int	check_lenght(char **txt)
 			len--;
 		}
 		len = save;
-		y++;
 	}
 	if (!check_truth(check))
-	{
-		free(check);
-		return (-4);
-	}
+		len = -4;
 	free(check);
 	return (len);
 }
@@ -92,16 +88,21 @@ int	is_map_framed(char **txt)
 int	parsing(char **txt)
 {
 	int	error;
+	int	err;
 
 	error = is_map_framed(txt);
+	if (error > 0)
+			err = certificate_map(txt);
 	if (error == -2)
-		ft_printf("❌ The length of one of your line is uncorrect, please verify your map.");
+		ft_printf("Error\n❌ The length of one of your line is uncorrect, please verify your map.");
 	else if (error == -1)
-		ft_printf("❌ The frame of your map aren't good. Fix it and try again.\n");
+		ft_printf("Error\n❌ The frame of your map aren't good. Fix it and try again.\n");
 	else if (error == -3)
-		ft_printf("❌ The top side or bottom side of your map are not valid ");
+		ft_printf("Error\n❌ The top side or bottom side of your map are not valid ");
 	else if (error == -4)
-		ft_printf("❌ The map miss an element out of one of those : P C E 0 1");
+		ft_printf("Error\n❌ The map miss an element out of one of those : P C E 0 1");
+	else if (err == -5)
+		ft_printf("Error\n❌ The map doesn't have a way to the end from the starting point");
 	else
 	{
 		ft_printf("✅ your map is perfect, nothing to say ! good job !");

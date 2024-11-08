@@ -13,15 +13,21 @@
 
 int	main(int argc, char **argv)
 {
-	const char	*PATH = argv[1];
-	int			fd = open(PATH, O_RDONLY);
+	const char	*path;
+	int			fd;
 	int			result;
 	char		**txt;
 
-	(void)argc;
+	if (argc != 2)
+	{
+		ft_printf("Could you please give me a file to open 🥹");
+		return (0);
+	}
+	path = argv[1];
+	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("the map didn't open 🫵 Looser !\n");
+		printf("Error\n The map didn't open please check if the map exists.");
 		return (-1);
 	}
 	txt = malloc (1 * sizeof(char *));

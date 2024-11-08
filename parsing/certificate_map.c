@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:31:07 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/07 17:23:50 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/08 13:06:21 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -15,6 +15,7 @@ void	find_p(char **txt, int *x, int *y)
 {
 	while (txt[*x])
 	{
+		(*y) = 0;
 		while (txt[*x][*y])
 		{
 			if (txt[*x][*y] == 'P')
@@ -25,29 +26,18 @@ void	find_p(char **txt, int *x, int *y)
 	}
 }
 
-int	certificate_map(int fd)
+int	certificate_map(char **txt)
 {
-	char	**txt;
 	int		x;
 	int		y;
 
 	x = 0;
 	y = 0;
-	txt = malloc(1);
-	txt[0] = NULL;
-	txt = get_text(fd, txt);
 	if (!txt)
 		return (0);
-	if (!parsing(txt))
-	{
-		free_all(txt);
-		return (0);
-	}
 	find_p(txt, &x, &y);
+	printf("x : %d, y : %d\n", x, y);
 	flood(txt, x, y);
-
-
-
 	return (1);
 
 }
