@@ -1,60 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   certificate_map.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:31:07 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/07 14:00:22 by cmorel           ###   ########.fr       */
+/*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
+/*   Updated: 2024/11/11 16:35:40 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "parsing.h"
 
-void	find_p(char **txt, int *x, int *y)
+int	main(int argc, char **argv)
 {
-	while (txt[*x])
+	const char	*path;
+	int			fd;
+	int			result;
+	char		**txt;
+
+	if (argc != 2)
 	{
-		while (txt[*x][*y])
-		{
-			if (txt[*x][*y] == 'P')
-				return ;
-			(*y)++;
-		}
-		(*x)++;
+		ft_printf("Could you please give me a file to open 🥹");
+		return (0);
 	}
-}
-
-
-int check_directions(char **txt)
-{
-	return (0);
-}
-
-
-int	certificate_map(int fd)
-{
-	char	**txt;
-	int		x;
-	int		y;
-
-	x = 0;
-	y = 0;
-	txt = malloc(1);
+	path = argv[1];
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error\n The map didn't open please check if the map exists.");
+		return (-1);
+	}
+	txt = malloc (1 * sizeof(char *));
 	txt[0] = NULL;
 	txt = get_text(fd, txt);
-	if (!txt)
-		return (0);
-	if (!parsing(txt))
-	{
-		free_all(txt);
-		return (0);
-	}
-	find_p(txt, &x, &y);
+	result = parsing(txt);
 
-
-
-
-	return (1);
-
+	free_all(txt);
 }

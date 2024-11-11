@@ -29,10 +29,12 @@ PARSING_PATH = parsing/
 OBJ_PATH = obj/
 GRAPHIC_PATH =  graphics/
 
-PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c core.c
+PARSING = certificate_map.c main.c node_handle.c parsing.c text_handle.c flood_fill.c
+GRAPHIC = core.c
 
+GRAPHICS = $(addprefix $(GRAPHIC_PATH), $(GRAPHIC))
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
-OBJ = $(PARSING:.c=.o) 
+OBJ = $(PARSING:.c=.o) $(GRAPHIC:.c:.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 
 all: $(NAME)
@@ -46,10 +48,10 @@ $(PRINTF):
 	@make --no-print-directory -C $(PRINTF_DIR)
 
 $(MLX):
-	@make --no-print-directory -C $(MLX_DIR) -s -j all
+	make --no-print-directory -C $(MLX_DIR) -s -j all
 
-$(NAME): $(PRINTF) $(MLX) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX)
+$(NAME): $(PRINTF) $(OBJS)
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX) 
 
 $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
