@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:31:07 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/08 13:06:21 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:01:36 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -30,14 +30,15 @@ int	certificate_map(char **txt)
 {
 	int		x;
 	int		y;
+	int		error;
 
 	x = 0;
 	y = 0;
 	if (!txt)
 		return (0);
 	find_p(txt, &x, &y);
-	printf("x : %d, y : %d\n", x, y);
-	flood(txt, x, y);
-	return (1);
-
+	error = flood(txt, x, y, 'E');
+	if (error > 0)
+		error = flood(txt, x, y, 'C');
+	return (error);
 }

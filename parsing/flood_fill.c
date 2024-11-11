@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:00:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/08 18:51:40 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/11 10:42:35 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -38,29 +38,28 @@ char **cpy_map(char **txt, t_point *max)
 	return (cpy);
 }
 
-int	ft_fill(char **cpy, int x, int y, t_point max)
+int	ft_fill(char **cpy, int x, int y, t_point max, char c)
 {
 	int	up;
 	int	down;
 	int	right;
 	int	left;
 
-	if (x < 0 || y < 0 || y >= max.y|| x >= max.x || cpy[x][y] == 1)
+	if (cpy[x][y] == 'X' || cpy[x][y] == '1')
 		return (0);
-	if (cpy[x][y] == 'E')
+	if (cpy[x][y] == c)
 		return (1);
-	cpy[x][y] = '1';
-	up = ft_fill(cpy, x - 1, y, max);
-	right = ft_fill(cpy, x, y + 1, max);
-	left = ft_fill(cpy, x, y - 1, max);
-	down = ft_fill(cpy, x + 1, y, max);
-
+	cpy[x][y] = 'X';
+	right = ft_fill(cpy, x, y + 1, max, c);
+	up = ft_fill(cpy, x - 1, y, max, c);
+	down = ft_fill(cpy, x + 1, y, max, c);
+	left = ft_fill(cpy, x, y - 1, max, c);
 	if (up || down || left || right)
 		return (1);
 	return (0);
 }
 
-int flood(char **txt,int x,int y)
+int flood(char **txt,int x,int y, char ch)
 {
 	t_point	*c;
 	t_point	*max;
@@ -70,13 +69,15 @@ int flood(char **txt,int x,int y)
 	c = malloc(sizeof(t_point));
 	max = malloc(sizeof(t_point));
 	cpy = cpy_map(txt, max);
-	code = -5;
-	if (ft_fill(cpy, x, y, *max))
+	code = 1;
+	if (!ft_fill(cpy, x, y, *max, ch))
 	{
-		ft_printf("Congratulation, you even have a path from the start to the exit ! ✅");
-		code = 1;
+		if (ch == 'E')
+			code = -5;
+		else if (ch == 'C')
+				code = -6;
 	}
-	free_all(cpy);
+		free_all(cpy);
 	free(max);
 	free(c);
 	return (code);

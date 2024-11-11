@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/08 13:00:57 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:04:16 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -96,16 +96,18 @@ int	parsing(char **txt)
 	if (error == -2)
 		ft_printf("Error\n❌ The length of one of your line is uncorrect, please verify your map.");
 	else if (error == -1)
-		ft_printf("Error\n❌ The frame of your map aren't good. Fix it and try again.\n");
+		ft_printf("Error\n❌ The frame of your map aren't good. Fix it and try again.");
 	else if (error == -3)
-		ft_printf("Error\n❌ The top side or bottom side of your map are not valid ");
+		ft_printf("Error\n❌ The top side or bottom side of your map are not valid. ");
 	else if (error == -4)
-		ft_printf("Error\n❌ The map miss an element out of one of those : P C E 0 1");
+		ft_printf("Error\n❌ The map miss an element out of one of those : P C E 0 1.");
 	else if (err == -5)
-		ft_printf("Error\n❌ The map doesn't have a way to the end from the starting point");
+		ft_printf("Error\n❌ The map doesn't have a way to the end from the starting point.");
+	else if (err == -6)
+		ft_printf("Error\n❌ The map does't have a way to any collectible.");
 	else
 	{
-		ft_printf("✅ your map is perfect, nothing to say ! good job !");
+		ft_printf("✅ Congratulations ! yout map has everything required !");
 		return (1);
 	}
 	return (0);

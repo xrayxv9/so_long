@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
 INC_DIR = includes
-INCS = -I lib/get_next_line
+INCS = -I lib/get_next_line -I lib/MacroLibX/$(INC_DIR)
 
 # Couleurs pour les messages
 GREEN = \033[32m
@@ -16,6 +16,9 @@ RESET = \033[0m
 #MLX_DIR := lib/MacroLibX
 #MLX := $(MLX_DIR)/libmlx.so
 
+MLX_DIR := lib/MacroLibX
+MLX := $(MLX_DIR)/libmlx.so
+
 PRINTF_DIR = lib/printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
@@ -24,11 +27,14 @@ GNL = $(GNL_DIR)get_next_line.c $(GNL_DIR)get_next_line_utils.c
 
 PARSING_PATH = parsing/
 OBJ_PATH = obj/
+GRAPHIC_PATH =  graphics/
 
 PARSING = certificate_map.c main.c node_handle.c parsing.c text_handle.c flood_fill.c
+GRAPHIC = core.c
 
+GRAPHICS = $(addprefix $(GRAPHIC_PATH), $(GRAPHIC))
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
-OBJ = $(PARSING:.c=.o)
+OBJ = $(PARSING:.c=.o) $(GRAPHIC:.c:.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 
 all: $(NAME)
@@ -41,8 +47,11 @@ all: $(NAME)
 $(PRINTF):
 	@make --no-print-directory -C $(PRINTF_DIR)
 
+$(MLX):
+	make --no-print-directory -C $(MLX_DIR) -s -j all
+
 $(NAME): $(PRINTF) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX)
 
 $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
@@ -51,12 +60,14 @@ $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 clean:
 	@echo "$(RED)Suppression des fichiers objets..."
 	@rm -rf $(OBJ_PATH)
+	@make --no-print-directory -C $(MLX_DIR) -s -j clean
 	@make --no-print-directory -C $(PRINTF_DIR) fclean
 	@echo "$(RED)"
 	@echo "$(RESET)"
 
 fclean: clean
 	@echo "$(RED)Suppression de l'exécutable..."
+	@make --no-print-directory -C $(MLX_DIR) -s -j fclean
 	@rm -f $(NAME)
 	
 re: fclean all

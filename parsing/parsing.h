@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:10:41 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/08 10:34:20 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/11 10:42:59 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			ft_printf(const char *s, ...);
 
 int			check_truth(t_checks *check);
 
-int			flood(char **txt,int x,int y);
+int			flood(char **txt,int x, int y, char ch);
 
 int			certificate_map(char **txt);
 
