@@ -6,10 +6,11 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/11 16:35:40 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/12 09:55:49 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "graphics.h"
 #include "parsing.h"
 
 int	main(int argc, char **argv)
@@ -35,6 +36,8 @@ int	main(int argc, char **argv)
 	txt[0] = NULL;
 	txt = get_text(fd, txt);
 	result = parsing(txt);
+	if (result)
+		core(txt);
 
 	free_all(txt);
 }
