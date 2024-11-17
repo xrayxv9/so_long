@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/12 15:51:31 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:34:41 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -36,16 +36,16 @@ void	init_title_screen(t_game *game)
 	game->images->screen_title->image = mlx_png_file_to_image(game->game,
 			"asset/title_screen/preview.png", &game->images->screen_title->w,
 			&game->images->screen_title->h);
-	game->images->screen_title->pos_x = 0;
-	game->images->screen_title->pos_y = 0;
+	game->images->screen_title->pos_w = 0;
+	game->images->screen_title->pos_h = 0;
 	mlx_put_image_to_window(game->game, game->win,
 		game->images->screen_title->image, 0, 0);
-	game->images->start_b->pos_x = game->w / 3.1;
-	game->images->start_b->pos_x = game->h / 2.1;
+	game->images->start_b->pos_w = game->w / 3.1;
+	game->images->start_b->pos_h = game->h / 2.1;
 
 	mlx_put_image_to_window(game->game, game->win,
-		game->images->start_b->image, game->images->start_b->pos_x,
-		game->images->start_b->pos_y / 2.1);
+		game->images->start_b->image, game->images->start_b->pos_w,
+		game->images->start_b->pos_h / 2.1);
 	mlx_on_event(game->game, game->win, MLX_MOUSEDOWN, mouse_hook, game);
 }
 
@@ -54,6 +54,7 @@ int	update(void *param)
 	t_game	*game;
 
 	game = ((t_game *) param);
+	(void)game;
 	return (0);
 }
 

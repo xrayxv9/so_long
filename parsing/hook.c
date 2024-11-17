@@ -6,23 +6,28 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:24:50 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/12 15:49:32 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:23:55 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
 #include "parsing.h"
 
-int	mouse_hook(t_game *game)
+int	mouse_hook(int button, void *param)
 {
 	t_mouse	mouse;
 	t_image *item;
+	t_game *game;
 
+	game = (t_game *)param;
 	item = game->images->start_b;
-	mlx_mouse_get_pos(game->game, &mouse.co_x, &mouse.co_y);
-	if (game->scene == 1)
+	mlx_mouse_get_pos(game->game, &mouse.w, &mouse.h);
+	if ((mouse.w <= (item->w + item->pos_w) && mouse.w >= item->pos_w) &&
+		(mouse.h <= (item->h + item->pos_h) && mouse.h >= item->pos_h))
 	{
-		if ((mouse.co_x <= item->w&& mouse.co_x >= item->pos_x) &&
-		(mouse.co_y <= item->h && mouse.co_y >= item->pos_y))
-			ft_printf("GG le zgeg");
+		//game->scene++;
+		ft_printf("ca passe !\n");
 	}
+
+
+	return (1);
 }

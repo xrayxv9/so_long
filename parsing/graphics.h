@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/12 15:49:42 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:17:04 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -32,15 +32,15 @@ typedef struct s_image
 {
 	int		w;
 	int		h;
-	int		pos_x;
-	int		pos_y;
+	int		pos_w;
+	int		pos_h;
 	void	*image;
 }	t_image;
 
 typedef struct s_mouse
 {
-	int co_x;
-	int co_y;
+	int w;
+	int h;
 } t_mouse;
 
 typedef struct s_images
@@ -65,6 +65,6 @@ typedef struct s_game
 
 void	core(char **txt);
 
-int		mouse_hook(t_game *game);
+int		mouse_hook(int button, void *param);
 
 #endif

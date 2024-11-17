@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:46:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 15:18:13 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/12 23:16:30 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -40,21 +40,16 @@ int	ft_putnbr(void *num)
 		len++;
 	}
 	n = (unsigned int)i;
-	len += ft_put(i, "0123456789");
+	len += ft_put(n, "0123456789");
 	return (len);
 }
 
 int	ft_putunbr(void *num)
 {
-	unsigned int	n;
 	unsigned int	i;
 	int				len;
 
 	i = *((unsigned int *)num);
-	if (i < 0)
-		n = (unsigned int)(i * -1);
-	else
-		n = (unsigned int)i;
-	len = ft_put(n, "0123456789");
+	len = ft_put(i, "0123456789");
 	return (len);
 }

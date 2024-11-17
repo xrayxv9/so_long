@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:18:52 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 15:21:29 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:49:00 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -32,10 +32,7 @@ int	ft_hex_low(void *i)
 
 	base = "0123456789abcdef";
 	num = *((unsigned int *)i);
-	if (num < 0)
-		n = (unsigned int)-num;
-	else
-		n = (unsigned int)num;
+	n = (unsigned int)num;
 	return (gen_hex(base, n));
 }
 
@@ -47,9 +44,6 @@ int	ft_hex_up(void *i)
 
 	base = "0123456789ABCDEF";
 	num = *((unsigned int *)i);
-	if (num < 0)
-		n = (unsigned int)-num;
-	else
-		n = (unsigned int)-num;
-	return (gen_hex(base, num));
+	n = (unsigned int)-num;
+	return (gen_hex(base, n));
 }
