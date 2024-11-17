@@ -1,6 +1,6 @@
 NAME = so_long
 
-CC = cc
+CC = clang
 CFLAGS = -Wall -Werror -Wextra -g
 
 INC_DIR = includes
@@ -29,7 +29,7 @@ PARSING_PATH = parsing/
 OBJ_PATH = obj/
 GRAPHIC_PATH =  graphics/
 
-PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c core.c
+PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c core.c hook.c
 
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
 OBJ = $(PARSING:.c=.o) 
@@ -49,7 +49,7 @@ $(MLX):
 	@make --no-print-directory -C $(MLX_DIR) -s -j all
 
 $(NAME): $(PRINTF) $(MLX) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX)
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ `sdl2-config --cflags --libs` $(MLX)
 
 $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
