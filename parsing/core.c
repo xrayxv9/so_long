@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/18 13:28:54 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/18 13:56:20 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -75,6 +75,8 @@ void	core(char **map)
 	mlx_set_fps_goal(game.game, 60);
 	if (game.scene == 1)
 		init_title_screen(&game);
+	if (game.scene == 2)
+		main_game(&game);
 	mlx_on_event(game.game, game.win, MLX_WINDOW_EVENT, window_hook, &game);
 	mlx_loop_hook(game.game, update, &game);
 	mlx_loop(game.game);

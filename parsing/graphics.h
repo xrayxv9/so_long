@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/17 17:31:42 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/18 13:55:30 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -36,6 +36,18 @@ typedef struct s_image
 	int		pos_h;
 	void	*image;
 }	t_image;
+
+typedef struct s_floor
+{
+	t_image *top;
+	t_image *bot;
+	t_image *left;
+	t_image *right;
+	t_image *corner_left_top;
+	t_image *corner_left_bot;
+	t_image *corner_right_top;
+	t_image *corner_right_bot;
+}	t_floor;
 
 typedef struct s_mouse
 {
