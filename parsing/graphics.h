@@ -6,13 +6,15 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/18 15:07:52 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/18 17:41:37 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
 # include "../lib/MacroLibX/includes/mlx.h"
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_player
 {
@@ -39,14 +41,15 @@ typedef struct s_image
 
 typedef struct s_floor
 {
-	t_image *top;
-	t_image *bot;
-	t_image *left;
-	t_image *right;
-	t_image *corner_left_top;
-	t_image *corner_left_bot;
-	t_image *corner_right_top;
-	t_image *corner_right_bot;
+	t_image	*top;
+	t_image	*bot;
+	t_image	*left;
+	t_image	*right;
+	t_image	*corner_left_top;
+	t_image	*corner_left_bot;
+	t_image	*corner_right_top;
+	t_image	*corner_right_bot;
+	t_image	*middle;
 }	t_floor;
 
 typedef struct s_mouse
@@ -78,5 +81,7 @@ typedef struct s_game
 void	core(char **txt);
 
 int		mouse_hook(int button, void *param);
+
+void	wall(t_game *game, char **txt, int w, int h, t_floor *floor);
 
 #endif
