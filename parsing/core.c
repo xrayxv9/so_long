@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/14 19:34:41 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/18 13:28:54 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -45,7 +45,7 @@ void	init_title_screen(t_game *game)
 
 	mlx_put_image_to_window(game->game, game->win,
 		game->images->start_b->image, game->images->start_b->pos_w,
-		game->images->start_b->pos_h / 2.1);
+		game->images->start_b->pos_h);
 	mlx_on_event(game->game, game->win, MLX_MOUSEDOWN, mouse_hook, game);
 }
 
