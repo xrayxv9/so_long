@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/19 14:05:34 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/19 13:25:04 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	show(t_game *game, char **txt, int w, int h, t_floor *floor)
 	t_image	bonus;
 
 	bonus.image = NULL;
-	img.image = floor->floor.image;
+	img.image = floor->floor->image;
 	if (txt[w][h] == 1)
-		img.image = floor->wall.image;
+		img.image = floor->wall->image;
 	else if (txt[w][h] == 'C')
-		bonus.image = floor->coin.image;	
+		bonus.image = floor->coin->image;	
 	else if (txt[w][h] == 'E')
-		bonus.image = floor->trap.image;
+		bonus.image = floor->trap->image;
 	mlx_put_image_to_window(game->game, game->win,img.image, w * 16, h * 16);
 	if (bonus.image)
 		mlx_put_image_to_window(game->game, game->win,
@@ -36,13 +36,14 @@ void	init_floor(t_game *game, t_floor *floor)
 {
 	printf("passage1\n");
 
-	floor->floor.image = mlx_png_file_to_image(game->game,
+
+	floor->floor->image = mlx_png_file_to_image(game->game,
 										"asset/floor/Grass_Middle.png",
-										&floor->floor.w, &floor->floor.h);	
+										&floor->floor->w, &floor->floor->h);	
 	printf("passage2\n");
-	floor->wall.image = mlx_png_file_to_image(game->game,
-										"asset/floor/Water_Middle.png",
-										&floor->wall.w, &floor->wall.h);
+	//floor->wall->image = mlx_png_file_to_image(game->game,
+	//										"asset/floor/Water_Middle.png",
+	//										&floor->wall->w, &floor->wall->h);
 	printf("passage3\n");
 }
 void main_game(t_game *game)
@@ -59,16 +60,8 @@ void main_game(t_game *game)
 		while (game->map[w][h])
 		{
 			show(game, game->map, w, h, &floor);
-			printf("%d\n", h);
-
 			h++;
-		
 		}
-		printf("_______________________________________________\n");
-		printf("%d\n", w);
-
 		w++;
 	}
-		printf("%d\n", w);
-
 }

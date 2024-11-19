@@ -6,28 +6,21 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:24:50 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/18 10:54:28 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/19 12:59:44 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
 #include "parsing.h"
 
-int	mouse_hook(int button, void *param)
+int	key_hook(int key, void *param)
 {
-	t_mouse	mouse;
-	t_image *item;
 	t_game *game;
-
+	
 	game = (t_game *)param;
-	item = game->images->start_b;
-	mlx_mouse_get_pos(game->game, &mouse.w, &mouse.h);
-	if ((mouse.w <= (item->w + item->pos_w) && mouse.w >= item->pos_w) &&
-		(mouse.h <= (item->h + item->pos_h) && mouse.h >= item->pos_h) && button == 1)
+	if (key == 'w')
 	{
-		game->scene++;
-		mlx_clear_window(game->game, game->win);
+		printf("blurg");
+		return (1);
 	}
-
-
-	return (1);
+	return (0);
 }

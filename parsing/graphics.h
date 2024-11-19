@@ -6,13 +6,14 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/18 17:41:37 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/19 13:51:39 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
 # include "../lib/MacroLibX/includes/mlx.h"
+# include "../lib/get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -22,13 +23,6 @@ typedef struct s_player
 	int		pos_y;
 	char	*path;
 } t_player;
-
-typedef struct s_ennemie
-{
-	int		pos_x;
-	int		pos_y;
-	char	*path;
-}	t_ennemie;
 
 typedef struct s_image
 {
@@ -41,15 +35,10 @@ typedef struct s_image
 
 typedef struct s_floor
 {
-	t_image	*top;
-	t_image	*bot;
-	t_image	*left;
-	t_image	*right;
-	t_image	*corner_left_top;
-	t_image	*corner_left_bot;
-	t_image	*corner_right_top;
-	t_image	*corner_right_bot;
-	t_image	*middle;
+	t_image	coin;
+	t_image	floor;
+	t_image wall;
+	t_image	trap;
 }	t_floor;
 
 typedef struct s_mouse
@@ -58,24 +47,14 @@ typedef struct s_mouse
 	int h;
 } t_mouse;
 
-typedef struct s_images
-{
-	t_image	*screen_title;
-	t_image	*start_b;
-	t_image	*button_param;
-}			t_images;
-
 typedef struct s_game
 {
 	void		*game;
 	void		*win;
 	char		**map;
 	t_player	p1;
-	t_ennemie	*en;
 	int			w;
 	int			h;
-	int			scene;
-	t_images	*images;
 } t_game;
 
 void	core(char **txt);
@@ -83,5 +62,7 @@ void	core(char **txt);
 int		mouse_hook(int button, void *param);
 
 void	wall(t_game *game, char **txt, int w, int h, t_floor *floor);
+
+void	main_game(t_game *game);
 
 #endif
