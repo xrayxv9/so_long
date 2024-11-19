@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/19 13:26:59 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/19 14:24:33 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -22,7 +22,6 @@ t_game	init_game(t_game *game, char **map)
 	game->game = &images;
 	game->h = i * 64;
 	game->w = ft_strlen(map[0]) * 64;
-	printf("w : %d, h : %d\n", game->w, game->h);
 	game->game = mlx_init();
 	game->win = mlx_new_window(game->game, game->w, game->h, "so_long");
 	game->map = map;
