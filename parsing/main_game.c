@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/19 14:46:41 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/19 15:56:09 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	show(t_game *game, char **txt, int w, int h, t_floor *floor)
 {
 	t_image img;
 	t_image	bonus;
-
+	int		player;
 	bonus.image = NULL;
 	img.image = floor->floor.image;
-	if (txt[w][h] == 1)
+	if (w == game->p1.pos_x && h == game->p1.pos_y)
+		player = 1;
+	if (txt[w][h] == '1')
 		img.image = floor->wall.image;
 	else if (txt[w][h] == 'C')
 		bonus.image = floor->coin.image;	
@@ -30,6 +32,7 @@ void	show(t_game *game, char **txt, int w, int h, t_floor *floor)
 	if (bonus.image)
 		mlx_put_image_to_window(game->game, game->win,
 						  bonus.image, h * 64, w * 64);
+	
 }
 
 void	init_floor(t_game *game, t_floor *floor)
@@ -47,30 +50,23 @@ void	init_floor(t_game *game, t_floor *floor)
 										   "asset/floor/portal.png",
 										   &floor->trap.w, &floor->trap.h);
 }
-void main_game(t_game *game)
+void main_game(t_game *game, t_floor *floor)
 {
-	t_floor floor;
 	int		w;
 	int		h;
 
 	w = 0;
-	init_floor(game, &floor);
-	while (game->map[w])
+	init_floor(game, floor);
+	while (game->map[w] && !game->refresh)
 	{
 		h = 0;
 		while (game->map[w][h])
 		{
-			show(game, game->map, w, h, &floor);
-			printf("%d\n", h);
-
+			show(game, game->map, w, h, floor);
 			h++;
-		
 		}
-		printf("_______________________________________________\n");
-		printf("%d\n", w);
-
 		w++;
 	}
-		printf("%d\n", w);
-
+	mlx_on_event(game->game, game->win, MLX_KEYDOWN, key_hook, game);
+	game->refresh = 1;
 }

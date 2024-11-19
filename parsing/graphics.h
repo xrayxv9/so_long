@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/19 13:51:39 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/19 15:56:05 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -17,13 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_player
-{
-	int		pos_x;
-	int		pos_y;
-	char	*path;
-} t_player;
-
 typedef struct s_image
 {
 	int		w;
@@ -32,6 +25,14 @@ typedef struct s_image
 	int		pos_h;
 	void	*image;
 }	t_image;
+
+typedef struct s_player
+{
+	int		pos_x;
+	int		pos_y;
+	int		depla;
+	t_image img;
+} t_player;
 
 typedef struct s_floor
 {
@@ -55,6 +56,7 @@ typedef struct s_game
 	t_player	p1;
 	int			w;
 	int			h;
+	int			refresh;
 } t_game;
 
 void	core(char **txt);
@@ -63,6 +65,8 @@ int		mouse_hook(int button, void *param);
 
 void	wall(t_game *game, char **txt, int w, int h, t_floor *floor);
 
-void	main_game(t_game *game);
+void	main_game(t_game *game, t_floor *floor);
+
+int		key_hook(int key, void *param);
 
 #endif
