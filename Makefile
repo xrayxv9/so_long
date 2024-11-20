@@ -30,7 +30,7 @@ OBJ_PATH = obj/
 GRAPHIC_PATH =  graphics/
 
 PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c core.c hook.c \
-		  main_game.c
+		  main_game.c animations.c
 
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
 OBJ = $(PARSING:.c=.o) 

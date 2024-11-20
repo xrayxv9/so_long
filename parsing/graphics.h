@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/19 15:56:05 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:59:10 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -26,11 +26,20 @@ typedef struct s_image
 	void	*image;
 }	t_image;
 
+typedef	struct s_anim
+{
+	t_image	frame1;
+	t_image	frame2;
+	t_image	frame3;
+	t_image	frame4;
+}	t_anim;
+
 typedef struct s_player
 {
 	int		pos_x;
 	int		pos_y;
 	int		depla;
+	t_anim	idle;
 	t_image img;
 } t_player;
 
@@ -57,6 +66,8 @@ typedef struct s_game
 	int			w;
 	int			h;
 	int			refresh;
+	int			fps;
+	t_floor		*floor;
 } t_game;
 
 void	core(char **txt);
@@ -65,8 +76,16 @@ int		mouse_hook(int button, void *param);
 
 void	wall(t_game *game, char **txt, int w, int h, t_floor *floor);
 
-void	main_game(t_game *game, t_floor *floor);
+void	main_game(t_game *game);
 
 int		key_hook(int key, void *param);
+
+void	idle_player(t_game *game);
+
+void	player_init(t_game *game);
+
+void	player_destroy(t_game *game);
+
+void	show(t_game *game, char **txt, int w, int h);
 
 #endif
