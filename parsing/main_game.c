@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 13:46:49 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:41:16 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void main_game(t_game *game)
 	int		h;
 
 	w = 0;
-	//floor->coin.image = NULL;
-	//printf("la\n%p", floor->coin.image);
 	if (!game->floor->coin.image)
 	{
 		player_init(game);

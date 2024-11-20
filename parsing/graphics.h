@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 14:26:43 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:46:12 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -14,6 +14,7 @@
 
 # include "../lib/MacroLibX/includes/mlx.h"
 # include "../lib/get_next_line/get_next_line.h"
+# include "parsing.h"
 # include <unistd.h>
 # include <stdlib.h>
 

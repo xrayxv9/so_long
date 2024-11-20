@@ -6,19 +6,21 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 13:47:23 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:51:13 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
+#include "parsing.h"
 #include <stdio.h>
 
 
 
 t_game	init_game(t_game *game, char **map)
 {
-	t_image	images;
+	t_image		images;
+	t_player	p1;
 	int			i;
-	 
+		 
 	i = 0;
 	while (map[i])
 		i++;
@@ -30,6 +32,8 @@ t_game	init_game(t_game *game, char **map)
 	game->game = mlx_init();
 	game->win = mlx_new_window(game->game, game->w, game->h, "so_long");
 	game->map = map;
+	find_p(game->map, &game->p1.pos_x, &game->p1.pos_y);
+	game->p1 = p1;
 	return (*game);
 }
 
@@ -43,10 +47,6 @@ int	update(void *param)
 	game->fps++;
 	if (game->fps > 80)
 		game->fps = 0;
-	printf("_________________________\n");
-	printf("fps : %d\n", game->fps);
-	mlx_on_event(game->game, game->win, MLX_KEYDOWN, key_hook, game);
-
 	idle_player(game);
 	return (0);
 }
@@ -77,6 +77,6 @@ void	core(char **map)
 	mlx_loop(game.game);
 	player_destroy(&game);
 	mlx_destroy_image(game.game, game.p1.img.image);
-	mlx_destroy_window(game.game, game.win);
+ 	mlx_destroy_window(game.game, game.win);
 	mlx_destroy_display(game.game);
 }

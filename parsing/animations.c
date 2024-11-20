@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 08:52:23 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 14:20:03 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:45:49 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -50,7 +50,7 @@ void	idle_player(t_game *game)
 	t_anim		a;
 
 	a = game->p1.idle;
-	show(game, game->map, game->p1.pos_x / 64, game->p1.pos_y / 64);
+	show(game, game->map, game->p1.pos_x, game->p1.pos_y);
 	if (game->fps >= 0 && game->fps < 20)
 		game->p1.img.image = a.frame1.image;
 	else if (game->fps >= 20 && game->fps < 40)
@@ -60,5 +60,5 @@ void	idle_player(t_game *game)
 	else if (game->fps >= 60 && game->fps <= 80)
 		game->p1.img.image = a.frame4.image;
 	mlx_put_image_to_window(game->game, game->win, game->p1.img.image,
-						 game->p1.pos_x, game->p1.pos_y);
+						 game->p1.pos_x * 64, game->p1.pos_y * 64);
 }
