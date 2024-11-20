@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 12:06:46 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:47:23 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -39,10 +39,14 @@ int	update(void *param)
 
 	game = (t_game *)param;
 	main_game(game);
+	
 	game->fps++;
-	if (game->fps > 100)
+	if (game->fps > 80)
 		game->fps = 0;
+	printf("_________________________\n");
 	printf("fps : %d\n", game->fps);
+	mlx_on_event(game->game, game->win, MLX_KEYDOWN, key_hook, game);
+
 	idle_player(game);
 	return (0);
 }

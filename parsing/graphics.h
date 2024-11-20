@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 11:59:10 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 14:26:43 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -16,6 +16,12 @@
 # include "../lib/get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
+
+# define S_KEY 22
+# define D_KEY 7
+# define W_KEY 26
+# define A_KEY 4
+# define ESC_KEY 41
 
 typedef struct s_image
 {

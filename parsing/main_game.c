@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 12:03:27 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:46:49 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 
 void	show(t_game *game, char **txt, int w, int h)
 {
-	t_image img;
+	void	*img;
 	t_image	bonus;
-	int		player;
+
 	bonus.image = NULL;
-	img.image = game->floor->floor.image;
-	if (w == game->p1.pos_x && h == game->p1.pos_y)
-		player = 1;
+	img = game->floor->floor.image;
 	if (txt[w][h] == '1')
-		img.image = game->floor->wall.image;
+		img= game->floor->wall.image;
 	else if (txt[w][h] == 'C')
 		bonus.image = game->floor->coin.image;	
 	else if (txt[w][h] == 'E')
 		bonus.image = game->floor->trap.image;
-	mlx_put_image_to_window(game->game, game->win,img.image, h * 64, w * 64);
+	mlx_put_image_to_window(game->game, game->win,img, h * 64, w * 64);
 	if (bonus.image)
 		mlx_put_image_to_window(game->game, game->win,
 						  bonus.image, h * 64, w * 64);
@@ -65,7 +63,6 @@ void main_game(t_game *game)
 	//printf("la\n%p", floor->coin.image);
 	if (!game->floor->coin.image)
 	{
-		printf("ici\n");
 		player_init(game);
 		init_floor(game);
 	}
@@ -79,6 +76,5 @@ void main_game(t_game *game)
 		}
 		w++;
 	}
-	mlx_on_event(game->game, game->win, MLX_KEYDOWN, key_hook, game);
 	game->refresh = 1;
 }
