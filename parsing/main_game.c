@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 16:00:37 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 22:01:50 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ void	show(t_game *game, char **txt, int w, int h)
 	else if (txt[w][h] == 'C')
 		bonus.image = game->floor->coin.image;	
 	else if (txt[w][h] == 'E')
-		bonus.image = game->floor->trap.image;
+	{
+		if (game->end)
+			bonus.image = game->floor->trap.image;
+		else
+			bonus.image = game->floor->closed.image;
+	}
 	mlx_put_image_to_window(game->game, game->win,img, h * 64, w * 64);
 	if (bonus.image)
 		mlx_put_image_to_window(game->game, game->win,
@@ -54,5 +59,6 @@ void main_game(t_game *game)
 		}
 		w++;
 	}
+	show_dep(game);
 	game->refresh = 1;
 }

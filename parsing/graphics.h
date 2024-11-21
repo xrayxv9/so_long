@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 20:43:05 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/21 21:55:07 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -62,6 +62,7 @@ typedef struct s_floor
 	t_image	floor;
 	t_image wall;
 	t_image	trap;
+	t_image	closed;
 }	t_floor;
 
 typedef struct s_mouse

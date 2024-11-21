@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:57:43 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 15:47:51 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 22:00:50 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -29,6 +29,7 @@ static void	check_c(t_game *game)
 		i++;
 	}
 	game->end = 1;
+	game->refresh = 0;
 }
 
 void collide(t_game *game)

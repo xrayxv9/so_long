@@ -29,7 +29,6 @@ void	show_dep(t_game *game)
 
 	i = -1;
 	len = ft_itoa(game->p1.depla, NULL, 0);
-	printf("len : %d\n", len);
 	s2 = malloc(sizeof(int) * len);
 	if (!s2)
 		return ;

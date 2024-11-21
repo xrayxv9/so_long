@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:07:21 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 21:28:16 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/21 21:57:34 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -60,6 +60,10 @@ void	init_floor(t_game *game)
 										"asset/floor/portal.png",
 										&game->floor->trap.w,
 										&game->floor->trap.h);
+	game->floor->closed.image = mlx_png_file_to_image(game->game,
+										"asset/floor/closed_portal.png",
+										&game->floor->closed.w,
+										&game->floor->closed.h); 
 }
 
 t_game	init_game(t_game *game, char **map)

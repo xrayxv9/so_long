@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:52:28 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 16:23:59 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 21:58:33 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -25,5 +25,5 @@ void	floor_destroy(t_game *game)
 	mlx_destroy_image(game->game, game->floor->wall.image);
 	mlx_destroy_image(game->game, game->floor->trap.image);
 	mlx_destroy_image(game->game, game->floor->coin.image);
-
+	mlx_destroy_image(game->game, game->floor->closed.image);
 }
