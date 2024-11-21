@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/11 15:30:46 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 14:32:47 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -94,20 +94,20 @@ int	parsing(char **txt)
 	if (error > 0)
 			err = certificate_map(txt);
 	if (error == -2)
-		ft_printf("Error\n❌ The length of one of your line is uncorrect, please verify your map.");
+		ft_printf("Error\n❌ The length of one of your line is uncorrect, please verify your map.\n");
 	else if (error == -1)
-		ft_printf("Error\n❌ The frame of your map aren't good. Fix it and try again.");
+		ft_printf("Error\n❌ The frame of your map aren't good. Fix it and try again.\n");
 	else if (error == -3)
-		ft_printf("Error\n❌ The top side or bottom side of your map are not valid. ");
+		ft_printf("Error\n❌ The top side or bottom side of your map are not valid.\n");
 	else if (error == -4)
-		ft_printf("Error\n❌ The map miss an element out of one of those : P C E 0 1.");
+		ft_printf("Error\n❌ The map miss an element out of one of those : P C E 0 1.\n");
 	else if (err == -5)
-		ft_printf("Error\n❌ The map doesn't have a way to the end from the starting point.");
+		ft_printf("Error\n❌ The map doesn't have a way to the end from the starting point.\n");
 	else if (err == -6)
-		ft_printf("Error\n❌ The map does't have a way to any collectible.");
+		ft_printf("Error\n❌ The map miss collectible, they could be unreachable\n");
 	else
 	{
-		ft_printf("✅ Congratulations ! yout map has everything required !");
+		ft_printf("✅ Congratulations ! yout map has everything required !\n");
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:24:50 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 16:45:22 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 15:48:36 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -16,7 +16,8 @@ void key_hook_next(int key, t_game *game, int w, int h)
 {
 	if (key == S_KEY)
 	{
-		if (game->map[w + 1][h])
+		show(game, game->map, game->p1.pos_y, game->p1.pos_x);
+		if (game->map[h + 1][w] != '1')
 		{
 			game->p1.depla++;
 			game->p1.pos_y += 1;
@@ -25,13 +26,15 @@ void key_hook_next(int key, t_game *game, int w, int h)
 
 	else if (key == D_KEY)
 	{
-		if (game->map[w][(h) + 1])
+		show(game, game->map, game->p1.pos_y, game->p1.pos_x);
+		if (game->map[h][w + 1] != '1')
 		{
 			game->p1.depla++;
 			game->p1.pos_x += 1;
 		}
 	}
-
+	else if (key == ESC_KEY)
+		mlx_loop_end(game->game);
 }
 
 int	key_hook(int key, void *param)
@@ -45,7 +48,8 @@ int	key_hook(int key, void *param)
 	h = game->p1.pos_y;
 	if (key == W_KEY)
 	{
-		if (game->map[w - 1][h] != '1')
+		show(game, game->map, game->p1.pos_y, game->p1.pos_x);
+		if (game->map[h - 1][w] != '1')
 		{
 			game->p1.depla++;
 			game->p1.pos_y -= 1;
@@ -53,7 +57,8 @@ int	key_hook(int key, void *param)
 	}
 	else if (key == A_KEY)
 	{
-		if (game->map[w][(h) - 1] != '1')
+		show(game, game->map, game->p1.pos_y, game->p1.pos_x);
+		if (game->map[h][w - 1] != '1')
 		{
 			game->p1.depla++;
 			game->p1.pos_x -= 1;

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 16:41:16 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 16:00:37 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,6 @@ void	show(t_game *game, char **txt, int w, int h)
 	
 }
 
-void	init_floor(t_game *game)
-{
-
-	game->floor->floor.image = mlx_png_file_to_image(game->game,
-										"asset/floor/middle.png",
-										&game->floor->floor.w,
-										&game->floor->floor.h);	
-	game->floor->wall.image = mlx_png_file_to_image(game->game,
-										"asset/floor/Water_Middle.png",
-										&game->floor->wall.w,
-										&game->floor->wall.h);
-	game->floor->coin.image = mlx_png_file_to_image(game->game,
-									   "asset/floor/coin.png",
-										&game->floor->coin.w,
-										&game->floor->coin.h);
-	game->floor->trap.image = mlx_png_file_to_image(game->game,
-										"asset/floor/portal.png",
-										&game->floor->trap.w,
-										&game->floor->trap.h);
-}
 void main_game(t_game *game)
 {
 	int		w;

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:00:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/11 10:42:35 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 14:49:08 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -47,16 +47,36 @@ int	ft_fill(char **cpy, int x, int y, t_point max, char c)
 
 	if (cpy[x][y] == 'X' || cpy[x][y] == '1')
 		return (0);
-	if (cpy[x][y] == c)
+	if (cpy[x][y] == 'E')
 		return (1);
 	cpy[x][y] = 'X';
 	right = ft_fill(cpy, x, y + 1, max, c);
 	up = ft_fill(cpy, x - 1, y, max, c);
 	down = ft_fill(cpy, x + 1, y, max, c);
 	left = ft_fill(cpy, x, y - 1, max, c);
-	if (up || down || left || right)
+	if (up || down || left || right || cpy[x][y] == c)
 		return (1);
 	return (0);
+}
+
+int	ft_check_c(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C')
+				return (-1);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int flood(char **txt,int x,int y, char ch)
@@ -67,7 +87,11 @@ int flood(char **txt,int x,int y, char ch)
 	int		code;
 
 	c = malloc(sizeof(t_point));
+	if (!c)
+		return (0);
 	max = malloc(sizeof(t_point));
+	if (!c)
+		return (0);
 	cpy = cpy_map(txt, max);
 	code = 1;
 	if (!ft_fill(cpy, x, y, *max, ch))
@@ -77,7 +101,9 @@ int flood(char **txt,int x,int y, char ch)
 		else if (ch == 'C')
 				code = -6;
 	}
-		free_all(cpy);
+	if (ft_check_c(cpy) == -1)
+		code = -6;
+	free_all(cpy);
 	free(max);
 	free(c);
 	return (code);

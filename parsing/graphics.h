@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 16:46:12 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 15:59:41 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -39,6 +39,10 @@ typedef	struct s_anim
 	t_image	frame2;
 	t_image	frame3;
 	t_image	frame4;
+	t_image	frame5;
+	t_image	frame6;
+	t_image	frame7;
+	t_image	frame8;
 }	t_anim;
 
 typedef struct s_player
@@ -47,7 +51,9 @@ typedef struct s_player
 	int		pos_y;
 	int		depla;
 	t_anim	idle;
+	t_anim	running;
 	t_image img;
+	int		end;
 } t_player;
 
 typedef struct s_floor
@@ -75,7 +81,10 @@ typedef struct s_game
 	int			refresh;
 	int			fps;
 	t_floor		*floor;
+	int			end;
 } t_game;
+
+t_game	init_game(t_game *game, char **map);
 
 void	core(char **txt);
 
@@ -94,5 +103,17 @@ void	player_init(t_game *game);
 void	player_destroy(t_game *game);
 
 void	show(t_game *game, char **txt, int w, int h);
+
+void	running_init(t_game *game);
+
+void	collide(t_game *game);
+
+void	init_floor(t_game *game);
+
+void	player_destroy(t_game *game);
+
+void	floor_destroy(t_game *game);
+
+void	player_init(t_game *game);
 
 #endif
