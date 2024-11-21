@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 15:59:41 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 20:43:05 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -107,6 +107,8 @@ void	show(t_game *game, char **txt, int w, int h);
 void	running_init(t_game *game);
 
 void	collide(t_game *game);
+
+void	show_dep(t_game *game);
 
 void	init_floor(t_game *game);
 

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:07:21 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 16:21:52 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 21:28:16 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -24,28 +24,20 @@ void	running_init(t_game *game)
 
 void	player_init(t_game *game)
 {
-	t_anim		*idle;
-	t_player	*p1;
-
-	p1 = &game->p1;
-	idle = &p1->idle;
-	idle->frame1.image = mlx_png_file_to_image(game->game,
-											"asset/player/idle1.png",
-											&idle->frame1.pos_w,
-											&idle->frame1.pos_h);
-	idle->frame2.image = mlx_png_file_to_image(game->game,
-											"asset/player/idle2.png",
-											&idle->frame2.pos_w,
-											&idle->frame2.pos_h);
-	idle->frame3.image = mlx_png_file_to_image(game->game,
-										   "asset/player/idle3.png",
-											&idle->frame3.pos_w,
-											&idle->frame3.pos_h);
-	idle->frame4.image = mlx_png_file_to_image(game->game,
-											"asset/player/idle4.png",
-											&idle->frame4.pos_w,
-											&idle->frame4.pos_h);
-	p1->img.image = idle->frame1.image;
+	game->p1.depla = 0;
+	game->p1.idle.frame1.image = mlx_png_file_to_image(game->game,  
+		"asset/player/idle1.png", &game->p1.idle.frame1.pos_w,
+		&game->p1.idle.frame1.pos_h);
+	game->p1.idle.frame2.image = mlx_png_file_to_image(game->game,
+		"asset/player/idle2.png", &game->p1.idle.frame2.pos_w,
+		&game->p1.idle.frame2.pos_h);
+	game->p1.idle.frame3.image = mlx_png_file_to_image(game->game,
+		"asset/player/idle3.png", &game->p1.idle.frame3.pos_w,
+		&game->p1.idle.frame3.pos_h);
+	game->p1.idle.frame4.image = mlx_png_file_to_image(game->game,
+		"asset/player/idle4.png", &game->p1.idle.frame4.pos_w,
+		&game->p1.idle.frame4.pos_h);
+	game->p1.img.image = game->p1.idle.frame1.image;
 	//running_init(game);
 }
 

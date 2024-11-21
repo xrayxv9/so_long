@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 15:58:24 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/21 21:06:40 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -48,6 +48,7 @@ void	core(char **map)
 	floor.floor.image = NULL;
 	game.floor = &floor;
 	init_game(&game, map);
+	mlx_set_font_scale(game.game, game.win, "asset/font/bc.ttf", 50);
 	mlx_set_fps_goal(game.game, 60);
 	mlx_on_event(game.game, game.win, MLX_WINDOW_EVENT, window_hook, &game);
 	mlx_loop_hook(game.game, update, &game);
