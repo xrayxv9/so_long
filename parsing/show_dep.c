@@ -1,4 +1,3 @@
-
 #include "graphics.h"
 
 int	ft_itoa(unsigned int n, char *ptr, int l)

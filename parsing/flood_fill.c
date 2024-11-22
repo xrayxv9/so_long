@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:00:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 14:49:08 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/22 12:25:23 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -18,7 +18,7 @@ void	get_len(int *x, int *y, char **txt)
 		(*x)++;
 }
 
-char **cpy_map(char **txt, t_point *max)
+char	**cpy_map(char **txt, t_point *max)
 {
 	char	**cpy;
 	int		i;
@@ -38,23 +38,23 @@ char **cpy_map(char **txt, t_point *max)
 	return (cpy);
 }
 
-int	ft_fill(char **cpy, int x, int y, t_point max, char c)
+int	ft_fill(char **cpy, t_point coo, t_point max, char c)
 {
 	int	up;
 	int	down;
 	int	right;
 	int	left;
 
-	if (cpy[x][y] == 'X' || cpy[x][y] == '1')
+	if (cpy[coo.x][coo.y] == 'X' || cpy[coo.x][coo.y] == '1')
 		return (0);
-	if (cpy[x][y] == 'E')
+	if (cpy[coo.x][coo.y] == 'E')
 		return (1);
-	cpy[x][y] = 'X';
-	right = ft_fill(cpy, x, y + 1, max, c);
-	up = ft_fill(cpy, x - 1, y, max, c);
-	down = ft_fill(cpy, x + 1, y, max, c);
-	left = ft_fill(cpy, x, y - 1, max, c);
-	if (up || down || left || right || cpy[x][y] == c)
+	cpy[coo.x][coo.y] = 'X';
+	right = ft_fill(cpy, (t_point){coo.x, coo.y + 1}, max, c);
+	up = ft_fill(cpy, (t_point){coo.x - 1, coo.y}, max, c);
+	down = ft_fill(cpy, (t_point){coo.x + 1, coo.y}, max, c);
+	left = ft_fill(cpy, (t_point){coo.x, coo.y - 1}, max, c);
+	if (up || down || left || right || cpy[coo.x][coo.y] == c)
 		return (1);
 	return (0);
 }
@@ -71,7 +71,7 @@ int	ft_check_c(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'C')
-				return (-1);
+				return (-6);
 			j++;
 		}
 		i++;
@@ -79,7 +79,7 @@ int	ft_check_c(char **map)
 	return (1);
 }
 
-int flood(char **txt,int x,int y, char ch)
+int	flood(char **txt, int x, int y, char ch)
 {
 	t_point	*c;
 	t_point	*max;
@@ -93,16 +93,14 @@ int flood(char **txt,int x,int y, char ch)
 	if (!c)
 		return (0);
 	cpy = cpy_map(txt, max);
-	code = 1;
-	if (!ft_fill(cpy, x, y, *max, ch))
+	if (!ft_fill(cpy, (t_point){x, y}, *max, ch))
 	{
 		if (ch == 'E')
 			code = -5;
 		else if (ch == 'C')
-				code = -6;
+			code = -6;
 	}
-	if (ft_check_c(cpy) == -1)
-		code = -6;
+	code = ft_check_c(cpy);
 	free_all(cpy);
 	free(max);
 	free(c);

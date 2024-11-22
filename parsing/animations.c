@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 08:52:23 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 15:54:09 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/22 12:39:58 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -26,5 +26,5 @@ void	idle_player(t_game *game)
 	else if (game->fps >= 60 && game->fps <= 80)
 		game->p1.img.image = a.frame4.image;
 	mlx_put_image_to_window(game->game, game->win, game->p1.img.image,
-						 game->p1.pos_x * 64, game->p1.pos_y * 64);
+		game->p1.pos_x * 64, game->p1.pos_y * 64);
 }

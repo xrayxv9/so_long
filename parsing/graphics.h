@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 21:55:07 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/22 12:30:46 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -33,7 +33,7 @@ typedef struct s_image
 	void	*image;
 }	t_image;
 
-typedef	struct s_anim
+typedef struct s_anim
 {
 	t_image	frame1;
 	t_image	frame2;
@@ -52,24 +52,24 @@ typedef struct s_player
 	int		depla;
 	t_anim	idle;
 	t_anim	running;
-	t_image img;
+	t_image	img;
 	int		end;
-} t_player;
+}			t_player;
 
 typedef struct s_floor
 {
 	t_image	coin;
 	t_image	floor;
-	t_image wall;
+	t_image	wall;
 	t_image	trap;
 	t_image	closed;
-}	t_floor;
+}			t_floor;
 
 typedef struct s_mouse
 {
-	int w;
-	int h;
-} t_mouse;
+	int	w;
+	int	h;
+}		t_mouse;
 
 typedef struct s_game
 {
@@ -83,15 +83,13 @@ typedef struct s_game
 	int			fps;
 	t_floor		*floor;
 	int			end;
-} t_game;
+}				t_game;
 
 t_game	init_game(t_game *game, char **map);
 
 void	core(char **txt);
 
 int		mouse_hook(int button, void *param);
-
-void	wall(t_game *game, char **txt, int w, int h, t_floor *floor);
 
 void	main_game(t_game *game);
 
@@ -104,8 +102,6 @@ void	player_init(t_game *game);
 void	player_destroy(t_game *game);
 
 void	show(t_game *game, char **txt, int w, int h);
-
-void	running_init(t_game *game);
 
 void	collide(t_game *game);
 

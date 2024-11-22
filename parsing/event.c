@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:57:43 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 22:00:50 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/22 12:52:51 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -32,7 +32,7 @@ static void	check_c(t_game *game)
 	game->refresh = 0;
 }
 
-void collide(t_game *game)
+void	collide(t_game *game)
 {
 	if (game->map[game->p1.pos_y][game->p1.pos_x] == 'C')
 	{

@@ -6,14 +6,14 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 14:32:47 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/22 12:37:40 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
 
 void	remove_n(char **txt)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -73,10 +73,10 @@ int	is_map_framed(char **txt)
 	while (txt[++y])
 	{
 		if (y == 0 || !txt[y + 1])
-		{	
+		{
 			while (txt[y][x])
 				if (txt[y][x++] != '1')
-					return (-3);
+					return (-2);
 		}
 		else
 			if (txt[y][0] != '1' || txt[y][len - 1] != '1')
@@ -92,19 +92,17 @@ int	parsing(char **txt)
 
 	error = is_map_framed(txt);
 	if (error > 0)
-			err = certificate_map(txt);
+		err = certificate_map(txt);
 	if (error == -2)
-		ft_printf("Error\n❌ The length of one of your line is uncorrect, please verify your map.\n");
+		ft_printf("Error\n❌ Incorrect line lenght, please verify your map.\n");
 	else if (error == -1)
-		ft_printf("Error\n❌ The frame of your map aren't good. Fix it and try again.\n");
-	else if (error == -3)
-		ft_printf("Error\n❌ The top side or bottom side of your map are not valid.\n");
+		ft_printf("Error\n❌ Your map isn't framed correctlty.\n");
 	else if (error == -4)
-		ft_printf("Error\n❌ The map miss an element out of one of those : P C E 0 1.\n");
+		ft_printf("Error\n❌ The map miss an element between : P C E 0 1.\n");
 	else if (err == -5)
-		ft_printf("Error\n❌ The map doesn't have a way to the end from the starting point.\n");
+		ft_printf("Error\n❌ There are to valid path to the end.\n");
 	else if (err == -6)
-		ft_printf("Error\n❌ The map miss collectible, they could be unreachable\n");
+		ft_printf("Error\n❌ The map miss/can't reach, collectibles.\n");
 	else
 	{
 		ft_printf("✅ Congratulations ! yout map has everything required !\n");

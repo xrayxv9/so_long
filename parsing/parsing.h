@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:10:41 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/20 16:47:10 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/22 12:18:51 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 typedef struct s_checks
 {
-	char key;
-	int	value;
+	char	key;
+	int		value;
 }			t_checks;
 
 typedef struct s_point
 {
 	int	x;
-	int y;
+	int	y;
 }		t_point;
 
 t_checks	*ft_find(t_checks *dict, char c);
@@ -46,7 +46,7 @@ int			ft_printf(const char *s, ...);
 
 int			check_truth(t_checks *check);
 
-int			flood(char **txt,int x, int y, char ch);
+int			flood(char **txt, int x, int y, char ch);
 
 int			certificate_map(char **txt);
 

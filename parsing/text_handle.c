@@ -1,14 +1,3 @@
-// ************************************************************************** //
-//                                                                            //
-//                                                        :::      ::::::::   //
-//   parsing.c                                          :+:      :+:    :+:   //
-//                                                    +:+ +:+         +:+     //
-//   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        //
-//                                                +#+#+#+#+#+   +#+           //
-//   Created: 2024/10/31 21:18:50 by xray              #+#    #+#             //
-//   Updated: 2024/11/03 19:16:24 by xray             ###   ########.fr       //
-//                                                                            //
-// ************************************************************************** //
 #include "parsing.h"
 
 int	pre_check(t_checks *tab, char *line)
@@ -53,7 +42,7 @@ char	**fill(char **txt, char *line, int i)
 	}
 	tmp[j] = ft_strdup(line);
 	j++;
-	tmp[j] = NULL;	
+	tmp[j] = NULL;
 	free_all(txt);
 	return (tmp);
 }

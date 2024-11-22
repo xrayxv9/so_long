@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 21:59:10 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/22 12:10:59 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -40,13 +40,13 @@ int	window_hook(int event, void *param)
 void	core(char **map)
 {
 	t_game	game;
-	t_floor floor;
+	t_floor	floor;
 
 	floor.coin.image = NULL;
 	floor.trap.image = NULL;
 	floor.wall.image = NULL;
 	floor.floor.image = NULL;
-	floor.closed.image= NULL;
+	floor.closed.image = NULL;
 	game.floor = &floor;
 	init_game(&game, map);
 	mlx_set_font_scale(game.game, game.win, "asset/font/bc.ttf", 50);
@@ -56,6 +56,6 @@ void	core(char **map)
 	mlx_loop(game.game);
 	player_destroy(&game);
 	floor_destroy(&game);
- 	mlx_destroy_window(game.game, game.win);
+	mlx_destroy_window(game.game, game.win);
 	mlx_destroy_display(game.game);
 }

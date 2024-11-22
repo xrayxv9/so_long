@@ -6,13 +6,12 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:24:50 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 22:04:34 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/22 12:26:16 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
-#include "parsing.h"
 
-void key_hook_next(int key, t_game *game)
+void	key_hook_next(int key, t_game *game)
 {
 	if (key == S_KEY)
 	{
@@ -67,4 +66,4 @@ int	key_hook(int key, void *param)
 	else if (key == ESC_KEY)
 		mlx_loop_end(game->game);
 	return (0);
-} 
+}

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 14:32:55 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/22 12:09:33 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ int	main(int argc, char **argv)
 	result = parsing(txt);
 	if (result)
 		core(txt);
-
 	free_all(txt);
 }

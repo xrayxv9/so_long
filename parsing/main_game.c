@@ -6,10 +6,9 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:56:32 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/21 22:01:50 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/22 12:39:47 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "graphics.h"
 #include <stdio.h>
 
@@ -21,9 +20,9 @@ void	show(t_game *game, char **txt, int w, int h)
 	bonus.image = NULL;
 	img = game->floor->floor.image;
 	if (txt[w][h] == '1')
-		img= game->floor->wall.image;
+		img = game->floor->wall.image;
 	else if (txt[w][h] == 'C')
-		bonus.image = game->floor->coin.image;	
+		bonus.image = game->floor->coin.image;
 	else if (txt[w][h] == 'E')
 	{
 		if (game->end)
@@ -31,14 +30,13 @@ void	show(t_game *game, char **txt, int w, int h)
 		else
 			bonus.image = game->floor->closed.image;
 	}
-	mlx_put_image_to_window(game->game, game->win,img, h * 64, w * 64);
+	mlx_put_image_to_window(game->game, game->win, img, h * 64, w * 64);
 	if (bonus.image)
 		mlx_put_image_to_window(game->game, game->win,
-						  bonus.image, h * 64, w * 64);
-	
+			bonus.image, h * 64, w * 64);
 }
 
-void main_game(t_game *game)
+void	main_game(t_game *game)
 {
 	int		w;
 	int		h;

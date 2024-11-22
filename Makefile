@@ -1,10 +1,10 @@
 NAME = so_long
 
-CC = clang
-CFLAGS = -Wall -Werror -Wextra -g
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -g -I/usr/include/SDL2
 
 INC_DIR = includes
-INCS = -I lib/get_next_line -I lib/MacroLibX/$(INC_DIR)
+INCS = -I lib/get_next_line -I lib/MacroLibX/$(INC_DIR) -L/usr/lib/x86_64-linux-gnu -lmlx -lSDL2
 
 # Couleurs pour les messages
 GREEN = \033[32m
@@ -50,7 +50,7 @@ $(MLX):
 	@make --no-print-directory -C $(MLX_DIR) -s -j all
 
 $(NAME): $(PRINTF) $(MLX) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ `sdl2-config --cflags --libs` $(MLX)
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX)
 
 $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@mkdir -p $(OBJ_PATH)

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/11 10:27:31 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/22 12:09:19 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -33,7 +33,6 @@ int	check_truth(t_checks *check)
 	}
 	return (1);
 }
-
 
 t_checks	*ft_find(t_checks *dict, char c)
 {
