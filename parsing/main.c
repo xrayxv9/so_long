@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/22 12:09:33 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/24 21:02:27 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ int	main(int argc, char **argv)
 	int			result;
 	char		**txt;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		ft_printf("Could you please give me a file to open 🥹");
+		return (0);
+	}
+	else if (argc > 2)
+	{
+		ft_printf("Can you please don't give me anything else than the map");
 		return (0);
 	}
 	path = argv[1];

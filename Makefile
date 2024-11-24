@@ -1,10 +1,10 @@
 NAME = so_long
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g -I/usr/include/SDL2
+CC = clang
+CFLAGS = -Wall -Werror -Wextra -g
 
 INC_DIR = includes
-INCS = -I lib/get_next_line -I lib/MacroLibX/$(INC_DIR) -L/usr/lib/x86_64-linux-gnu -lmlx -lSDL2
+INCS = -I lib/get_next_line -I lib/MacroLibX/$(INC_DIR)
 
 # Couleurs pour les messages
 GREEN = \033[32m

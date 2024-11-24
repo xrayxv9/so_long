@@ -6,11 +6,10 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:15:56 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/22 12:10:59 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/24 21:07:36 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
-#include "parsing.h"
 #include <stdio.h>
 
 int	update(void *param)
