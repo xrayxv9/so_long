@@ -30,7 +30,7 @@ GRAPHIC_PATH = graphics/
 OBJ_PATH = obj/
 
 PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c 
-GRAPHIC = core.c hook.c main_game.c animations.c init.c event.c destroy.c show_dep.c
+GRAPHIC = hook.c core.c  main_game.c animations.c init.c event.c destroy.c show_dep.c
 
 GRAPHICS =  $(addprefix $(GRAPHIC_PATH), $(GRAPHIC))
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
@@ -43,9 +43,6 @@ all: $(NAME)
 	@echo "$(BLUE)Compilation terminée"
 	@echo "$(RESET)"
 
-#$(MLX):
-#	make --no-print-directory -C $(MLX_DIR) -s -j all
-
 $(PRINTF):
 	@make --no-print-directory -C $(PRINTF_DIR)
 
@@ -57,6 +54,9 @@ $(NAME): $(PRINTF) $(MLX) $(OBJS) $(OBJS_GR)
 
 $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+
+$(OBJ_PATH)%.o: $(GRAPHIC_PATH)%.c
 	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 clean:

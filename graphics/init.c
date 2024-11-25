@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:07:21 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/24 21:13:09 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/25 11:45:51 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "graphics.h"
@@ -48,6 +48,15 @@ void	init_floor(t_game *game)
 			&game->floor->closed.w, &game->floor->closed.h);
 }
 
+void	check(t_game *game)
+{
+	if (game->w >= 1920 || game->h >= 1080)
+	{
+		game->w = 1920;
+		game->h = 1080;
+	}
+}
+
 t_game	init_game(t_game *game, char **map)
 {
 	t_image		images;
@@ -66,6 +75,7 @@ t_game	init_game(t_game *game, char **map)
 	game->h = i * 64;
 	game->w = ft_strlen(map[0]) * 64;
 	game->game = mlx_init();
+	check(game);
 	game->win = mlx_new_window(game->game, game->w, game->h, "so_long");
 	game->map = map;
 	find_p(game->map, &p1.pos_y, &p1.pos_x);
