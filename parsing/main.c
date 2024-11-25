@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/25 17:29:20 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/25 18:31:59 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../graphics/graphics.h"
@@ -46,6 +46,33 @@ int	tests(char *s)
 	return (fd);
 }
 
+int double_exit(char **map)
+{
+	int	i;
+	int	j;
+	int	exit;
+
+	i = 0;
+	exit = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'E')
+			{
+				if (exit)
+				{
+					ft_printf("Error\n Only one exit is expected");
+					return (0);
+				}
+				exit = 1;
+			}
+		}
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int			fd;
@@ -66,7 +93,8 @@ int	main(int argc, char **argv)
 	txt[0] = NULL;
 	txt = get_text(fd, txt);
 	result = parsing(txt);
-	if (result)
+
+	if (result && double_exit(txt))
 		core(txt);
 	free_all(txt);
 }
