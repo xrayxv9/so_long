@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/25 10:28:56 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/25 11:54:26 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -16,7 +16,6 @@
 # include "../lib/get_next_line/get_next_line.h"
 # include "../parsing/parsing.h"
 # include <unistd.h>
-# include <stdlib.h>
 
 # define S_KEY 22
 # define D_KEY 7

@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/25 11:22:53 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/25 11:59:22 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../graphics/graphics.h"
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error\n The map didn't open please check if the map exists.");
+		ft_printf("Error\n The map didn't open please check if the map exists.");
 		return (-1);
 	}
 	txt = malloc (1 * sizeof(char *));

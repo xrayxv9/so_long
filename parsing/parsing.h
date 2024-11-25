@@ -6,16 +6,14 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:10:41 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/25 10:27:55 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/25 11:56:16 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef PARSING_H
 # define PARSING_H
 
 # include "../lib/printf/ft_printf.h"
 # include "../lib/get_next_line/get_next_line.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
