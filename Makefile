@@ -26,15 +26,18 @@ GNL_DIR = lib/get_next_line/
 GNL = $(GNL_DIR)get_next_line.c $(GNL_DIR)get_next_line_utils.c
 
 PARSING_PATH = parsing/
+GRAPHIC_PATH = graphics/
 OBJ_PATH = obj/
-GRAPHIC_PATH =  graphics/
 
-PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c core.c hook.c \
-		  main_game.c animations.c init.c event.c destroy.c show_dep.c
+PARSING = certificate_map.c node_handle.c parsing.c text_handle.c flood_fill.c main.c 
+GRAPHIC = core.c hook.c main_game.c animations.c init.c event.c destroy.c show_dep.c
 
+GRAPHICS =  $(addprefix $(GRAPHIC_PATH), $(GRAPHIC))
 PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
 OBJ = $(PARSING:.c=.o) 
+OBJ_GR = $(GRAPHIC:.c=.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
+OBJS_GR = $(addprefix $(OBJ_PATH), $(OBJ_GR))
 
 all: $(NAME)
 	@echo "$(BLUE)Compilation terminée"
@@ -49,8 +52,8 @@ $(PRINTF):
 $(MLX):
 	@make --no-print-directory -C $(MLX_DIR) -s -j all
 
-$(NAME): $(PRINTF) $(MLX) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX)
+$(NAME): $(PRINTF) $(MLX) $(OBJS) $(OBJS_GR)
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(OBJS_GR) $(GNL) $(PRINTF) -o $@ -lSDL2 $(MLX)
 
 $(OBJ_PATH)%.o: $(PARSING_PATH)%.c
 	@mkdir -p $(OBJ_PATH)

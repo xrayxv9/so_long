@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:16:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/22 12:30:46 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/25 10:28:56 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GRAPHICS_H
@@ -14,7 +14,7 @@
 
 # include "../lib/MacroLibX/includes/mlx.h"
 # include "../lib/get_next_line/get_next_line.h"
-# include "parsing.h"
+# include "../parsing/parsing.h"
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -39,10 +39,6 @@ typedef struct s_anim
 	t_image	frame2;
 	t_image	frame3;
 	t_image	frame4;
-	t_image	frame5;
-	t_image	frame6;
-	t_image	frame7;
-	t_image	frame8;
 }	t_anim;
 
 typedef struct s_player
@@ -51,7 +47,6 @@ typedef struct s_player
 	int		pos_y;
 	int		depla;
 	t_anim	idle;
-	t_anim	running;
 	t_image	img;
 	int		end;
 }			t_player;

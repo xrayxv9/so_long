@@ -1,6 +1,0 @@
-{
-   Suppressions pour libmlx.so
-   Memcheck:Leak
-   fun:mlx_*
-   obj:/path/to/libmlx.so
-}
