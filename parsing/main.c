@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/25 18:31:59 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/26 08:58:32 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../graphics/graphics.h"
@@ -22,12 +22,17 @@ int	check_file(char *s)
 	i = 0;
 	j = 0;
 	t = "ber";
-	while (s[i] && s[i] == '.')
+	while (s[i] && s[i] != '.')
+		i++;
+	if (s[i] == '.')
 		i++;
 	while (s[i + j])
 	{
 		if (s[i + j] != t[j])
+		{
+			ft_printf("Error\n Only the .ber is accepted for the map.");
 			return (0);
+		}
 		j++;
 	}
 	return (1);
@@ -68,7 +73,9 @@ int double_exit(char **map)
 				}
 				exit = 1;
 			}
+			j++;
 		}
+		i++;
 	}
 	return (1);
 }
@@ -84,7 +91,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n One map is expected.");
 		return (0);
 	}
-	if (check_file(argv[1]))
+	if (!check_file(argv[1]))
 		return (-1);
 	fd = tests(argv[1]);
 	if (fd < 0)
