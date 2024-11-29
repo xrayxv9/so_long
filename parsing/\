@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:00:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/29 09:50:41 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/29 09:48:45 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -47,10 +47,7 @@ int	ft_fill(char **cpy, t_point coo, char c)
 	ft_fill(cpy, (t_point){coo.x + 1, coo.y}, c);
 	ft_fill(cpy, (t_point){coo.x, coo.y - 1}, c);
 	if (cpy[coo.x][coo.y] == c)
-	{
-		cpy[coo.x][coo.y] = 'X';
 		return (1);
-	}
 	return (0);
 }
 

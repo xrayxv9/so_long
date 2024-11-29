@@ -1,6 +1,6 @@
 NAME = so_long
 
-CC = clang
+CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
 INC_DIR = includes

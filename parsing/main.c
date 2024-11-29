@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:35:38 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/26 08:58:32 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/29 09:59:46 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../graphics/graphics.h"
@@ -45,13 +45,13 @@ int	tests(char *s)
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error\n The map didn't open please check if the map exists.");
+		ft_printf("Error\n The map couldn'r be opened.");
 		return (0);
 	}
 	return (fd);
 }
 
-int double_exit(char **map)
+int	double_exit(char **map)
 {
 	int	i;
 	int	j;
@@ -80,6 +80,12 @@ int double_exit(char **map)
 	return (1);
 }
 
+int	error(void)
+{
+	ft_printf("Error\n The map has an unexpected character");
+	return (-1);
+}
+
 int	main(int argc, char **argv)
 {
 	int			fd;
@@ -99,8 +105,9 @@ int	main(int argc, char **argv)
 	txt = malloc (1 * sizeof(char *));
 	txt[0] = NULL;
 	txt = get_text(fd, txt);
+	if (!txt)
+		return (error());
 	result = parsing(txt);
-
 	if (result && double_exit(txt))
 		core(txt);
 	free_all(txt);

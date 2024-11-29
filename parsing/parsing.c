@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/25 11:57:11 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/29 10:00:14 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -104,9 +104,6 @@ int	parsing(char **txt)
 	else if (err == -6)
 		ft_printf("Error\n❌ The map miss/can't reach, collectibles.\n");
 	else
-	{
-		ft_printf("✅ Congratulations ! yout map has everything required !\n");
 		return (1);
-	}
 	return (0);
 }
