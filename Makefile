@@ -62,6 +62,7 @@ $(OBJ_PATH)%.o: $(GRAPHIC_PATH)%.c
 clean:
 	@echo "$(RED)Suppression des fichiers objets..."
 	@rm -rf $(OBJ_PATH)
+	@rm -fr so_long
 	@make --no-print-directory -C $(MLX_DIR) -s -j clean
 	@make --no-print-directory -C $(PRINTF_DIR) fclean
 	@echo "$(RED)"
